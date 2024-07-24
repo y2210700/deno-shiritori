@@ -70,12 +70,9 @@
 
             // リセットボタンの押下時に実行
             document.querySelector("#resetSendButton").onclick = async(event) => {
+              // POST /resetを実行
               const response = await fetch("/reset", { method: "POST" });
-              const previousWord = await response.text();
-              // id: previousWordのタグを取得
-              const paragraph = document.querySelector("#previousWord");
-              // 取得したタグの中身を書き換える
-              paragraph.innerHTML = `前の単語: ${previousWord}`;
+              // ページのリロード
               window.location.reload();
             }
         </script>
