@@ -12,7 +12,6 @@ let wordHistories = ["しりとり"];
 Deno.serve(async (request) => {
     const pathname = new URL(request.url).pathname;
     console.log(`pathname: ${pathname}`);
-    // ./public以下のファイルを公開
 
     // GET /shiritori: 直前の単語を返す
     if (request.method === "GET" && pathname === "/shiritori") {
@@ -46,7 +45,7 @@ Deno.serve(async (request) => {
             if (nextWord.slice(-1) === "ん"){
                 return new Response(
                     JSON.stringify({
-                        "errorMessage": "入力した単語が「ん」で終わりました",
+                        "errorMessage": `入力した単語が「ん」で終わりました。入力した単語: ${nextWord}`,
                         "errorCode": "10002"
                     }),
                     {
@@ -59,7 +58,7 @@ Deno.serve(async (request) => {
             if (wordHistories.includes(nextWord)) {
                 return new Response(
                     JSON.stringify({
-                        "errorMessage": "同じ単語が入力されました",
+                        "errorMessage": `同じ単語が入力されました。入力した単語: ${nextWord}`,
                         "errorCode": "10003"
                     }),
                     {
