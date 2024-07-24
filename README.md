@@ -1,1 +1,1 @@
-"# deno-shiritori" 
+# deno-shiritori
