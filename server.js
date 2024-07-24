@@ -5,6 +5,7 @@ import {serveDir} from "https://deno.land/std@0.223.0/http/file_server.ts";
 
 //直前の単語を保持する
 let previousWord = "しりとり";
+// 使った単語の履歴
 let wordHistories = ["しりとり"];
 
 // localhostにDenoのHTTPサーバーを展開
@@ -75,6 +76,17 @@ Deno.serve(async (request) => {
         return new Response(previousWord);
     }
 
+    // POST /reset: リセットする
+    // request.methodとpathnameを確認
+    if (request.method === "POST" && pathname === "/reset") {
+        // 履歴の初期化
+        wordHistories = ["しりとり"];
+        // リセット後の初めの単語を渡す
+        previousWord = "しりとり"
+        return new Response(previousWord);
+    }
+
+    // ./public以下のファイルを公開
     return serveDir(
         request,
         {
