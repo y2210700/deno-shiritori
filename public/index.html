@@ -36,6 +36,7 @@
               paragraph.innerHTML = `前の単語: ${previousWord}`;
               // id: usedWordタグを取得
               const usedWordTag = document.querySelector("#usedWord");
+              // 履歴の初期化
               usedWordTag.innerHTML = `　${previousWord}<br>`;
             }
 
@@ -80,6 +81,7 @@
               nextWordInput.value = "";
               // id: usedWordタグを取得
               const usedWordTag = document.querySelector("#usedWord");
+              // 履歴を更新
               usedWordTag.innerHTML = `${usedWordTag.innerHTML}→${previousWord}<br>`;
             }
 
