@@ -11,15 +11,18 @@
         <h1>しりとり</h1>
         <h4>
           ルール<br>
+          ・直前の単語の最後の文字から始まる単語を入力してください<br>
+          ・ひらがなのみで入力してください<br>
           ・「ん」で終わる単語を使用しないでください<br>
           ・使用した単語を再び使用しないでください<br>
-          ・ひらがなだけで入力してください
         </h4>
         <!-- 現在の単語を表示する場所 -->
         <p id="previousWord"></p>
         <input id="nextWordInput" type="text" />
         <button id="nextWordSendButton">送信</button>
-        <button id="resetSendButton">リセット</button>
+        <button id="resetSendButton">リセット</button> <br>
+        <p>履歴</p>
+        <p id="usedWord"></p>
 
         <script>
             window.onload = async (event) => {
@@ -31,6 +34,9 @@
               const paragraph = document.querySelector("#previousWord");
               // 取得したタグの中身を書き換える
               paragraph.innerHTML = `前の単語: ${previousWord}`;
+              // id: usedWordタグを取得
+              const usedWordTag = document.querySelector("#usedWord");
+              usedWordTag.innerHTML = `　${previousWord}<br>`;
             }
 
             // 送信ボタンの押下時に実行
@@ -72,6 +78,9 @@
               paragraph.innerHTML = `前の単語: ${previousWord}`;
               // inputタグの中身を消去する
               nextWordInput.value = "";
+              // id: usedWordタグを取得
+              const usedWordTag = document.querySelector("#usedWord");
+              usedWordTag.innerHTML = `${usedWordTag.innerHTML}→${previousWord}<br>`;
             }
 
             // リセットボタンの押下時に実行

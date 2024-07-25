@@ -96,7 +96,7 @@ Deno.serve(async (request) => {
         wordHistories = ["しりとり"];
         // リセット後の初めの単語を渡す
         previousWord = "しりとり"
-        return new Response(previousWord);
+        return;
     }
 
     // ./public以下のファイルを公開
